@@ -1,38 +1,34 @@
-/** NodeJS example of using the 1INCH API with web3{js} */
-const axios = require('axios'); //used for getting api data, install with "yarn add axios"
-const Web3 = require('web3'); //used for web3 functions, install with "yarn add web3"
-const Common = require('ethereumjs-common').default; //used for creating custom chains, install with "yarn add '@ethereumjs/common'"
-var Tx = require('ethereumjs-tx').Transaction; //used to sign and broadcast the transaction, install with "yarn add ethereumjs-tx"
+
+const axios = require('axios'); 
+const Web3 = require('web3'); 
+const Common = require('ethereumjs-common').default; 
+var Tx = require('ethereumjs-tx').Transaction; 
 const web32 = new Web3("https://bsc-dataseed.binance.org/");
 const color = require('chalk');
 const UNISWAP = require('@uniswap/sdk')
 console.log(`The chainId of mainnet is ${UNISWAP.ChainId.MAINNET}.`)
 
 let BSCprovider = new Web3.providers.WebsocketProvider('wss://apis.ankr.com/wss/5e641e36678f450293097eb3a3542409/f95d9511a0c04e1812edfce68615b149/binance/full/main');
-//websocket provider for binance smart chain can be found here: app.ankr.com/apps/api
 
 
-//some variables/constnats we'll use
 let web3 = new Web3(BSCprovider);
 var privateKey = Buffer.from('369c628593b61a165f06e5949681e77e97a1f8695b53bd78dedc475a510651d6', 'hex');
 
 const ADDRESS = '0xf12aC456dA1BcD35561E2ba265cD8061dA393f8D';
 let presetsURL = 'https://api.1inch.exchange/v3.0/56/presets';
 
-let globalData = {}; //globalData will be a JSON object
-let transaction; //this will be what we broadcast
+let globalData = {}; 
+let transaction; /
 const binanceSmartChain = Common.forCustomChain(
-    'mainnet', { //Custom chain parameters 
+    'mainnet', { 
         name: 'Binance',
         networkId: 56,
         chainId: 56,
     },
-    'petersburg' //Supported hard forks
+    'petersburg' 
 )
 
-/**
- * The driver of the program, this will execute anything you put in it
- */
+
 
 
 // All tokens in 1Inch
@@ -2409,11 +2405,7 @@ function sendTransaction(tx) {
     }
 }
 
-/**
- * Will sign a transaction with a private key based on the transaction data provided
- * @param {the transaction you'd like signed} tx
- * @returns serialized transaction
- */
+
 function signTx(tx) {
     let temp = new Tx(tx, {
         common: binanceSmartChain
@@ -2423,21 +2415,16 @@ function signTx(tx) {
     return temp.serialize();
 }
 
-/**
- * Will call the api and return the data needed
- * @param {the url of what api call you want} url 
- * @param {the nonce of the transaction, the user must keep track of this} nonce
- */
 async function apiCaller(url, nonce) {
     let temp = await axios.get(url.hostname, url.options); //get the api call
     //console.log(temp)
-    temp = temp.data; //we only want the data object from the api call
+    temp = temp.data; 
     return temp;
 }
 
 
 
-driver(); //call driver to run all the code
+driver(); 
 
 
 
