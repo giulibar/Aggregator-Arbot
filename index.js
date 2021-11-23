@@ -12,7 +12,7 @@ let BSCprovider = new Web3.providers.WebsocketProvider('wss://apis.ankr.com/wss/
 
 
 let web3 = new Web3(BSCprovider);
-var privateKey = Buffer.from('369c628593b61a165f06e5949681e77e97a1f8695b53bd78dedc475a510651d6', 'hex');
+var privateKey = Buffer.from('-----------------------', 'hex');
 
 const ADDRESS = '0xf12aC456dA1BcD35561E2ba265cD8061dA393f8D';
 let presetsURL = 'https://api.1inch.exchange/v3.0/56/presets';
