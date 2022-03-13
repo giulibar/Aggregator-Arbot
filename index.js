@@ -8,7 +8,7 @@ const color = require('chalk');
 const UNISWAP = require('@uniswap/sdk')
 console.log(`The chainId of mainnet is ${UNISWAP.ChainId.MAINNET}.`)
 
-let BSCprovider = new Web3.providers.WebsocketProvider('wss://apis.ankr.com/wss/5e641e36678f450293097eb3a3542409/f95d9511a0c04e1812edfce68615b149/binance/full/main');
+let BSCprovider = new Web3.providers.WebsocketProvider('');
 
 
 let web3 = new Web3(BSCprovider);
